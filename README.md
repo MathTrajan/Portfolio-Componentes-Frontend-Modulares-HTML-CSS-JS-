@@ -15,7 +15,7 @@ Você pode ver o código em ação diretamente no site da empresa:
 
 ### ✨ Habilidades e Técnicas Demonstradas
 
-#### 1. Integração Segura em Ambiente de Produção (Agile E-commerce)
+#### 1. Integração Segura em Ambiente de Produção.
 -   **CSS Isolado:** Para garantir que os estilos dos componentes não entrassem em conflito com o CSS global da plataforma, todo o código foi encapsulado dentro de um seletor de ID (`#procolchoes-content`).
 -   **JavaScript Encapsulado (IIFE):** O código JavaScript foi envolvido em uma IIFE `(function(){ ... })();` para evitar a poluição do escopo global, uma prática essencial para o desenvolvimento em plataformas compartilhadas.
 
