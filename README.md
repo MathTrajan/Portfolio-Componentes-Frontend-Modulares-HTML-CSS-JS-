@@ -1,38 +1,50 @@
-# Portfólio: Desenvolvimento Frontend para Pró Colchões
+🖥️ Portfólio: Desenvolvimento Frontend – Pró Colchões
+Este repositório apresenta o código-fonte de múltiplos componentes e páginas institucionais desenvolvidos por Matheus Trajano, atualmente em produção no site oficial da Pró Colchões.
 
-Este repositório contém o código-fonte de múltiplos componentes e páginas institucionais desenvolvidos por **Matheus Trajano** e atualmente **em produção** no site da Pró Colchões.
+O projeto foi desenvolvido do zero utilizando HTML5, CSS3 e JavaScript puro (Vanilla JS), com o desafio de criar soluções customizadas, performáticas e seguras para integração com a plataforma de e-commerce Agile E-commerce.
 
-O projeto foi construído do zero com **HTML5, CSS3 e JavaScript puro (Vanilla JS)**, com o desafio de integrar soluções personalizadas e de alta performance na plataforma de e-commerce **Agile E-commerce**.
+🚀 Demonstração ao Vivo
+Veja o código em funcionamento diretamente no site da empresa:
 
-### 🚀 Demonstração Ao Vivo
+Conheça Nossa História
 
-Você pode ver o código em ação diretamente no site da empresa:
-*   **Conheça Nossa História:** (https://www.procolchoes.com.br/conheca-nossa-historia)
-*   **Página de Catálogos:** (https://www.procolchoes.com.br/catalogos)
-*   **Popup de Leads e Barra de Notícias:** Visíveis na navegação geral do site.
+Página de Catálogos
 
----
+Popup de Leads e Barra de Notícias: Visíveis durante a navegação geral do site.
 
-### ✨ Habilidades e Técnicas Demonstradas
+✨ Habilidades e Técnicas Demonstradas
+1️⃣ Integração Segura em Produção
+✅ CSS Isolado: Todos os estilos encapsulados em #procolchoes-content para evitar conflitos com o CSS global.
 
-#### 1. Integração Segura em Ambiente de Produção.
--   **CSS Isolado:** Para garantir que os estilos dos componentes não entrassem em conflito com o CSS global da plataforma, todo o código foi encapsulado dentro de um seletor de ID (`#procolchoes-content`).
--   **JavaScript Encapsulado (IIFE):** O código JavaScript foi envolvido em uma IIFE `(function(){ ... })();` para evitar a poluição do escopo global, uma prática essencial para o desenvolvimento em plataformas compartilhadas.
+✅ JavaScript Encapsulado (IIFE): Evita poluição do escopo global, garantindo segurança em ambientes compartilhados.
 
-#### 2. Componentes Dinâmicos e Focados em UX
--   **Popup de Leads com Fetch API:** Um modal interativo para captura de leads, que utiliza `localStorage` para não ser exibido repetidamente ao mesmo usuário. O envio é feito de forma assíncrona com `fetch()`, com máscara de telefone e feedback visual de carregamento.
--   **Carrossel de Notícias:** Uma barra de informações no topo do site, construída em JavaScript puro, com navegação e transição automáticas.
--   **Player de Vídeo Otimizado:** O vídeo institucional do YouTube só é carregado após o clique do usuário, uma técnica crucial para otimizar o tempo de carregamento inicial da página (First Contentful Paint).
+2️⃣ Componentes Dinâmicos e Experiência do Usuário (UX)
+📨 Popup de Leads com Fetch API:
 
-#### 3. Design Moderno e Otimização de Performance
--   **Layouts Responsivos com Grid e Flexbox:** Construção de layouts complexos e totalmente fluidos, como a timeline e os grids de features, que se adaptam a qualquer dispositivo.
--   **Animações Performáticas com `IntersectionObserver`:** Efeitos de "fade-in" suaves são ativados conforme o usuário rola a página, garantindo uma animação fluida sem impactar a performance.
+Uso de localStorage para evitar exibição repetida.
 
-### 🛠️ Tecnologias
--   **HTML5:** Estrutura semântica e acessível.
--   **CSS3:** Flexbox, Grid, Variáveis, Animações, Gradientes.
--   **JavaScript (ES6+):** `fetch` API, `IntersectionObserver`, `localStorage`, Manipulação do DOM.
+Envio assíncrono via fetch() com feedback visual e máscara de telefone.
 
----
+📰 Carrossel de Notícias:
 
-Este projeto demonstra minha capacidade de entregar soluções frontend robustas, performáticas и seguras, desde a concepção até a implementação bem-sucedida em um ambiente de e-commerce real e de grande escala.
+Navegação e transição automáticas em JavaScript puro.
+
+🎬 Player de Vídeo Otimizado:
+
+O vídeo do YouTube é carregado apenas no clique do usuário, melhorando o First Contentful Paint (FCP).
+
+3️⃣ Design Responsivo e Performance
+📱 Layouts Flexíveis: Construção de grids e timelines com Flexbox e CSS Grid, totalmente responsivos.
+
+🎨 Animações Performáticas: Efeitos de fade-in aplicados com IntersectionObserver, sem comprometer a performance.
+
+🛠️ Tecnologias Utilizadas
+HTML5: Estrutura semântica e acessível.
+
+CSS3: Flexbox, Grid, Variáveis, Animações e Gradientes.
+
+JavaScript (ES6+): fetch, IntersectionObserver, localStorage e manipulação de DOM.
+
+📌 Conclusão
+Este projeto demonstra minha capacidade de entregar soluções frontend robustas e performáticas, desde a concepção até a implementação em produção em um ambiente de e-commerce real e de grande escala.
+
