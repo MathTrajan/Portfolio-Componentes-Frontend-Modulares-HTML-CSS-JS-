@@ -7,8 +7,8 @@ O projeto foi construído do zero com **HTML5, CSS3 e JavaScript puro (Vanilla J
 ### 🚀 Demonstração Ao Vivo
 
 Você pode ver o código em ação diretamente no site da empresa:
-*   **Página "Quem Somos":** [procolchoes.com.br/quem-somos](https://www.procolchoes.com.br/quem-somos)
-*   **Página de Catálogos:** [procolchoes.com.br/catalogos](https://www.procolchoes.com.br/conheca-nossa-historia)
+*   **Conheça Nossa História:** (https://www.procolchoes.com.br/conheca-nossa-historia)
+*   **Página de Catálogos:** (https://www.procolchoes.com.br/catalogos)
 *   **Popup de Leads e Barra de Notícias:** Visíveis na navegação geral do site.
 
 ---
