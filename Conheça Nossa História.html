@@ -1,0 +1,413 @@
+<!-- 1. Estilos (CSS) Isolados -->
+<style>
+    /* O container principal que isola todo o nosso CSS */
+    #procolchoes-content {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        width: 100%;
+        background-color: white;
+    }
+
+    #procolchoes-content .container {
+        max-width: 2400px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    /* Animations */
+    #procolchoes-content .fade-in-observer {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.7s ease;
+    }
+
+    #procolchoes-content .fade-in-observer.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Sections */
+    #procolchoes-content .section {
+        padding: 4rem 0;
+        border-radius: 8px;
+    }
+
+    #procolchoes-content .section-gray {
+        background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    }
+
+    #procolchoes-content .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    #procolchoes-content .section-icon {
+        font-size: 3rem;
+        color: #082070;
+        margin-bottom: 1rem;
+    }
+
+    #procolchoes-content .section h2 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        color: #082070;
+        margin-bottom: 1rem;
+    }
+
+    /* Quem Somos */
+    #procolchoes-content .quem-somos-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    #procolchoes-content .text-content {
+        font-size: 1.125rem;
+        line-height: 1.8;
+    }
+
+    #procolchoes-content .text-content p {
+        margin-bottom: 1.25rem;
+    }
+
+    #procolchoes-content .text-content strong {
+        color: #082070;
+        font-weight: 600;
+    }
+
+    #procolchoes-content .video-container {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    #procolchoes-content .video-placeholder {
+        width: 100%; height: 100%; background: linear-gradient(135deg, #082070, #3b82f6);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        cursor: pointer; transition: transform 0.3s ease; color: white;
+    }
+    #procolchoes-content .video-placeholder:hover { transform: scale(1.05); }
+
+    #procolchoes-content .play-button {
+        width: 5rem; height: 5rem; background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        margin-bottom: 1rem; transition: all 0.3s ease; backdrop-filter: blur(10px);
+    }
+    #procolchoes-content .play-button:hover { background: rgba(255, 255, 255, 0.3); transform: scale(1.1); }
+    #procolchoes-content .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+    /* Features Grid */
+    #procolchoes-content .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    #procolchoes-content .feature-card {
+        background: white; padding: 2rem 1.5rem; border-radius: 1rem; text-align: center;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 1px solid #f1f5f9;
+    }
+    #procolchoes-content .feature-card:hover { transform: translateY(-0.5rem); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15); }
+    #procolchoes-content .feature-icon {
+        width: 5rem; height: 5rem; background: linear-gradient(135deg, #082070, #3b82f6);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 1rem; transition: transform 0.3s ease;
+    }
+    #procolchoes-content .feature-card:hover .feature-icon { transform: scale(1.1); }
+    #procolchoes-content .feature-icon i { font-size: 1.5rem; color: white; }
+    #procolchoes-content .feature-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: #082070; }
+    #procolchoes-content .feature-card p { color: #64748b; }
+
+    /* Timeline */
+    #procolchoes-content .timeline-container { max-width: 800px; margin: 0 auto; position: relative; }
+    #procolchoes-content .timeline-line {
+        position: absolute; left: 50%; top: 0; bottom: 0; width: 4px;
+        background: linear-gradient(180deg, #082070, #3b82f6); transform: translateX(-50%);
+    }
+    #procolchoes-content .timeline-item { position: relative; margin-bottom: 3rem; display: flex; align-items: center; }
+    #procolchoes-content .timeline-item:nth-child(odd) { flex-direction: row; }
+    #procolchoes-content .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+    #procolchoes-content .timeline-badge {
+        position: absolute; left: 50%; transform: translateX(-50%);
+        background: linear-gradient(135deg, #f59e0b, #ef4444); color: white;
+        padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 600;
+        font-size: 0.875rem; z-index: 2; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+    }
+    #procolchoes-content .timeline-content {
+        background: white; padding: 1.5rem; border-radius: 1rem;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); width: calc(50% - 2.5rem);
+    }
+    #procolchoes-content .timeline-item:nth-child(odd) .timeline-content { margin-right: auto; }
+    #procolchoes-content .timeline-item:nth-child(even) .timeline-content { margin-left: auto; }
+    #procolchoes-content .timeline-content h3 { color: #082070; font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; }
+    #procolchoes-content .timeline-content p { color: #64748b; line-height: 1.6; }
+
+    /* Sustentabilidade */
+    #procolchoes-content .sustentabilidade-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; }
+    #procolchoes-content .sustentabilidade-cards { display: flex; flex-direction: column; gap: 1rem; }
+    #procolchoes-content .sustentabilidade-card { padding: 1.5rem; border-radius: 1rem; color: white; text-align: center; transition: transform 0.3s ease; }
+    #procolchoes-content .sustentabilidade-card:hover { transform: translateY(-0.25rem); }
+    #procolchoes-content .sustentabilidade-card.green { background: linear-gradient(135deg, #10b981, #059669); }
+    #procolchoes-content .sustentabilidade-card.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    #procolchoes-content .sustentabilidade-card i { font-size: 2.25rem; margin-bottom: 0.75rem; display: block; }
+    #procolchoes-content .sustentabilidade-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+    #procolchoes-content .sustentabilidade-card p { opacity: 0.9; font-size: 0.875rem; }
+
+    /* Fábricas */
+    #procolchoes-content .fabricas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    #procolchoes-content .mapa-container { margin: 1.5rem 0; border-radius: 1rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    #procolchoes-content .mapa-image { width: 100%; height: auto; display: block; }
+    #procolchoes-content .fabricas-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    #procolchoes-content .fabrica-item {
+        display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white;
+        border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;
+    }
+    #procolchoes-content .fabrica-item:hover { transform: translateY(-0.25rem); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15); }
+    #procolchoes-content .fabrica-item i { color: #082070; font-size: 1.25rem; }
+    #procolchoes-content .fabrica-item strong { color: #082070; font-weight: 600; display: block; }
+    #procolchoes-content .fabrica-item span { color: #64748b; font-size: 0.875rem; }
+
+    /* Awards */
+    #procolchoes-content .awards-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
+    #procolchoes-content .award-card {
+        display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: white;
+        border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #f59e0b; transition: all 0.3s ease;
+    }
+    #procolchoes-content .award-card:hover { transform: translateY(-0.25rem); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15); }
+    #procolchoes-content .award-card i { font-size: 1.5rem; color: #f59e0b; width: 2.5rem; text-align: center; }
+    #procolchoes-content .award-card h3 { color: #082070; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem; }
+    #procolchoes-content .award-card p { color: #64748b; font-size: 0.875rem; }
+
+    /* CTA Section */
+    #procolchoes-content .cta-section { background: linear-gradient(135deg, #082070, #3b82f6); color: white; text-align: center; padding: 2rem 0; }
+    #procolchoes-content .cta-content { max-width: 800px; margin: 0 auto; }
+    #procolchoes-content .cta-content h2 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 700; margin-bottom: 0.75rem; color: white; }
+    #procolchoes-content .cta-content p { font-size: 1rem; margin-bottom: 1.25rem; opacity: 0.9; line-height: 1.6; }
+    #procolchoes-content .btn-cta {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        background: linear-gradient(135deg, #f59e0b, #ef4444); color: white;
+        padding: 0.75rem 1.5rem; border-radius: 2rem; text-decoration: none;
+        font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+    #procolchoes-content .btn-cta:hover { transform: translateY(-0.125rem); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        #procolchoes-content .quem-somos-grid, #procolchoes-content .sustentabilidade-grid, #procolchoes-content .fabricas-grid { grid-template-columns: 1fr; gap: 2rem; }
+        #procolchoes-content .timeline-line { left: 1.5rem; }
+        #procolchoes-content .timeline-item { flex-direction: row !important; padding-left: 3rem; }
+        #procolchoes-content .timeline-badge { left: 1.5rem; }
+        #procolchoes-content .timeline-content { width: 100%; margin: 0 !important; }
+    }
+    @media (max-width: 768px) {
+        #procolchoes-content .features-grid, #procolchoes-content .fabricas-list { grid-template-columns: 1fr; }
+        #procolchoes-content .section { padding: 3rem 0; }
+        #procolchoes-content .timeline-item { padding-left: 2.5rem; }
+        #procolchoes-content .timeline-badge { left: 1rem; font-size: 0.75rem; padding: 0.5rem 1rem; }
+    }
+</style>
+
+<!-- 2. Conteúdo HTML Completo Envolvido no Container Seguro -->
+<div id="procolchoes-content">
+    <!-- Seção Quem Somos -->
+    <section class="section fade-in-observer">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-users section-icon"></i>
+                <h2>Quem Somos</h2>
+            </div>
+            <div class="quem-somos-grid">
+                <div class="text-content">
+                    <p>
+                        A Pró Colchões é a solução que você nem sabia que precisava para sua empresa! Somando muitos anos de
+                        história, unindo a expertise da <strong>Probel</strong> e da
+                        <strong>Prodormir</strong>, duas das maiores marcas de colchões
+                        do Brasil, unimos a tradição com nosso DNA inovador para facilitar sua vida.
+                    </p>
+                    <p>
+                        Essa é uma plataforma de vendas simples, rápida e, o melhor, direta, para você comprar na hora que
+                        quiser e precisar.
+                    </p>
+                    <p>
+                        Nosso mix é o maior do mercado brasileiro, com produtos que você já conhece: colchões, box, conjuntos,
+                        cabeceiras, poltronas e agora travesseiros também!
+                    </p>
+                </div>
+                <div class="video-container" id="video-container-procolchoes">
+                    <div class="video-placeholder" onclick="playVideoProColchoes()">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                        <p>Vídeo Institucional Pró Colchões</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="section section-gray fade-in-observer">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Sustentabilidade</h3>
+                    <p>Placas solares e materiais orgânicos</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-industry"></i></div>
+                    <h3>4 Fábricas</h3>
+                    <p>Estrategicamente localizadas</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3>2 Centros</h3>
+                    <p>De distribuição nacional</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Tecnologia</h3>
+                    <p>Maquinário de última geração</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- História de Sucesso -->
+    <section class="section fade-in-observer">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-calendar-alt section-icon"></i>
+                <h2>História de Sucesso</h2>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                <div class="timeline-item">
+                    <div class="timeline-badge">1940</div>
+                    <div class="timeline-content">
+                        <h3>Probel</h3>
+                        <p>Fundada por Paulo Robel, foi a primeira marca de colchões em escala industrial do Brasil. Responsável pela padronização das medidas de colchões, influenciou também os setores de enxovais e móveis.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-badge">1958</div>
+                    <div class="timeline-content">
+                        <h3>Prodormir</h3>
+                        <p>Áscolo Martins, com espírito empreendedor, deixou o interior de São Paulo, fundou uma fábrica em Manaus e passou a fabricar colchões de molas. Ele mesmo pilotava seu avião para apresentar os produtos e conquistar clientes em todo o país.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-badge">Hoje</div>
+                    <div class="timeline-content">
+                        <h3>União das Histórias</h3>
+                        <p>A união dessas histórias se deu com a aquisição da marca Probel por Áscolo Martins, fortalecendo ainda mais nosso legado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustentabilidade e Tecnologia -->
+    <section class="section section-gray fade-in-observer">
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-leaf section-icon"></i>
+                <h2>Sustentabilidade e Tecnologia</h2>
+            </div>
+            <div class="sustentabilidade-grid">
+                <div class="text-content">
+                    <p><strong>Sempre na vanguarda:</strong> utilizamos placas solares, substituímos espuma à base de petróleo por uma alternativa orgânica feita com soja, e adotamos práticas sustentáveis no dia a dia que reduzem nossa pegada de carbono.</p>
+                    <p>Com <strong>2 centros de distribuição</strong> e <strong>4 fábricas</strong> estrategicamente localizadas, cuidamos de todo o processo fabril, desde a fabricação dos molejos e espuma até a montagem artesanal dos colchões.</p>
+                    <p>Nossas fábricas utilizam maquinário de última geração, são abastecidas por energia solar e usam matérias-primas renováveis, promovendo eficiência e qualidade com responsabilidade ambiental.</p>
+                </div>
+                <div class="sustentabilidade-cards">
+                    <div class="sustentabilidade-card green"><i class="fas fa-solar-panel"></i><h3>Energia Solar</h3><p>Fábricas abastecidas por energia renovável</p></div>
+                    <div class="sustentabilidade-card blue"><i class="fas fa-globe-americas"></i><h3>Materiais Orgânicos</h3><p>Espuma feita com soja substituindo petróleo</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fábricas e Reconhecimento -->
+    <section class="section fade-in-observer">
+        <div class="container">
+            <div class="fabricas-grid">
+                <div>
+                    <div class="section-header"><i class="fas fa-map-marker-alt section-icon"></i><h2>Nossas Fábricas</h2></div>
+                    <div class="mapa-container"><img src="https://taace8.vtexassets.com/assets/vtex.file-manager-graphql/images/92293f5c-595d-48f6-94c3-1eebf735dd57___a1784c239c4f0a0139bbd3f2bec241f8.png" alt="Mapa das Fábricas" class="mapa-image"></div>
+                    <div class="fabricas-list">
+                        <div class="fabrica-item"><i class="fas fa-industry"></i><div><strong>Aparecida do Taboado</strong><span>Mato Grosso do Sul</span></div></div>
+                        <div class="fabrica-item"><i class="fas fa-industry"></i><div><strong>Aparecida de Goiânia</strong><span>Goiás</span></div></div>
+                        <div class="fabrica-item"><i class="fas fa-industry"></i><div><strong>Cuiabá</strong><span>Mato Grosso</span></div></div>
+                        <div class="fabrica-item"><i class="fas fa-industry"></i><div><strong>Queimadas</strong><span>Paraíba</span></div></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="section-header"><i class="fas fa-award section-icon"></i><h2>Reconhecimento</h2></div>
+                    <div class="text-content">
+                        <p>Colecionadora de prêmios de marca mais lembrada e de destaque no setor hoteleiro, a Pró Colchões recebeu o Prêmio Época Reclame Aqui 2018, que elege por voto popular as melhores empresas para o consumidor.</p>
+                        <p>História que está só no começo; afinal a inovação – quem diria? – não pode parar para descansar.</p>
+                    </div>
+                    <div class="awards-grid">
+                        <div class="award-card"><i class="fas fa-trophy"></i><div><h3>Bicampeões Reclame Aqui</h3><p>Com 7 indicações adicionais</p></div></div>
+                        <div class="award-card"><i class="fas fa-star"></i><div><h3>Top 20 Marcas</h3><p>Revista Móveis de Valor entre 500+ empresas</p></div></div>
+                        <div class="award-card"><i class="fas fa-medal"></i><div><h3>Prêmio Época 2018</h3><p>Eleita por voto popular</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section fade-in-observer">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Plataforma Pró Colchões</h2>
+                <p>Agora, com apenas um clique, você tem acesso a todo o nosso catálogo. Basta ter um CNPJ para fazer seus pedidos a qualquer hora e lugar.</p>
+                <a href="https://www.procolchoes.com.br/cadastrar" class="btn-cta" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Acesse a Plataforma <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- 3. JavaScript Seguro e Isolado -->
+<script>
+    (function() {
+        function initializeAnimations() {
+            if ('IntersectionObserver' in window) {
+                const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+                const observer = new IntersectionObserver(function(entries, obs) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+                document.querySelectorAll("#procolchoes-content .fade-in-observer").forEach(el => observer.observe(el));
+            } else {
+                document.querySelectorAll("#procolchoes-content .fade-in-observer").forEach(el => el.classList.add("visible"));
+            }
+        }
+
+        window.playVideoProColchoes = function() {
+            const videoContainer = document.getElementById("video-container-procolchoes");
+            if (videoContainer) {
+                const iframe = document.createElement("iframe");
+                iframe.src = "https://www.youtube.com/embed/J2WUwfN7GWc?autoplay=1&rel=0";
+                iframe.title = "Vídeo Institucional Pró Colchões";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                iframe.allowFullscreen = true;
+                videoContainer.innerHTML = "";
+                videoContainer.appendChild(iframe);
+            }
+        }
+
+        if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
+            initializeAnimations();
+        } else {
+            document.addEventListener("DOMContentLoaded", initializeAnimations);
+        }
+    })();
+</script>
+<!-- Fim do código -->

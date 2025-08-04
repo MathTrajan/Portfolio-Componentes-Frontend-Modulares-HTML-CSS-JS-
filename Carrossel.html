@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Barra de Informações</title>
+  <style>
+    .info-bar {
+      background-color: #004CB3;
+      color: white;
+      text-align: center;
+      padding: 8px 0;
+      position: relative;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30px;
+    }
+
+    #info-text {
+      position: relative;
+      opacity: 1;
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      transform: translateX(0);
+      text-align: center;
+    }
+
+    #info-text.slide-out-left {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    #info-text.slide-out-right {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 16px;
+      padding: 5px;
+      user-select: none;
+    }
+
+    .arrow:hover {
+      opacity: 0.8;
+    }
+
+    .prev {
+      left: 20px;
+      /* Modificado para melhor responsividade */
+    }
+
+    .next {
+      right: 20px;
+      /* Modificado para melhor responsividade */
+    }
+
+    #info-text a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="info-bar">
+    <div class="arrow prev" onclick="prevInfo()">
+      ◀
+    </div>
+    <span id="info-text"></span>
+    <div class="arrow next" onclick="nextInfo()">
+      ▶
+    </div>
+  </div>
+
+  <script>
+    const infoTexts = [{
+      text: "Descontos exclusivos! Cadastre-se já!",
+      link: "https://www.procolchoes.com.br/cadastrar"
+    },
+    {
+      text: "Frete Grátis: Confira as condições",
+      link: "https://www.procolchoes.com.br/cadastrar"
+    },
+    {
+      text: "Confira 15% de desconto à vista no PIX",
+      link: "https://www.procolchoes.com.br/cadastrar"
+    }];
+    let currentIndex = 0;
+    let infoTextElement = document.getElementById("info-text");
+    let autoScrollInterval;
+
+    function updateInfoText(direction) {
+      infoTextElement.classList.add(`slide-out-${direction}`);
+
+      setTimeout(() => {
+        const currentInfo = infoTexts[currentIndex];
+        infoTextElement.innerHTML = `<a href="${currentInfo.link}">${currentInfo.text}</a>`; // Removido target="_blank"
+
+        infoTextElement.classList.remove('slide-out-left', 'slide-out-right');
+        void infoTextElement.offsetWidth;
+      }, 500);
+    }
+
+    function nextInfo() {
+      currentIndex = (currentIndex + 1) % infoTexts.length;
+      updateInfoText('right');
+      resetAutoScroll();
+    }
+
+    function prevInfo() {
+      currentIndex = (currentIndex - 1 + infoTexts.length) % infoTexts.length;
+      updateInfoText('left');
+      resetAutoScroll();
+    }
+
+    function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+        nextInfo();
+      }, 5000);
+    }
+
+    function resetAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    }
+
+    const initialInfo = infoTexts[currentIndex];
+    infoTextElement.innerHTML = `<a href="${initialInfo.link}">${initialInfo.text}</a>`; // Removido target="_blank"
+    currentIndex = (currentIndex + 1) % infoTexts.length;
+
+    startAutoScroll();
+
+    infoTextElement.addEventListener('click', function (event) {
+      // Para que a página seja atualizada, basta deixar o link agir normalmente
+    });
+
+  </script>
+
+</body>
+
+</html>

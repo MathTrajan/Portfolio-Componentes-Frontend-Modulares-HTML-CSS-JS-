@@ -1,0 +1,169 @@
+<!-- Popup Lead isolado: colocar ANTES do </body> -->
+
+<style>
+  .lead-popup-wrapper .modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+  .lead-popup-wrapper .modal-content {
+    background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    animation: slideIn 0.4s ease;
+  }
+  @keyframes slideIn {
+    from {transform: translateY(-30px) scale(0.9); opacity: 0;}
+    to {transform: translateY(0) scale(1); opacity: 1;}
+  }
+  .lead-popup-wrapper .modal-content h2 {
+    color: #1e40af;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  .lead-popup-wrapper .modal-content p {
+    color: #4b5563;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+  }
+  .lead-popup-wrapper .modal-content input {
+    width: 100%;
+    margin: 12px 0;
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+  }
+  .lead-popup-wrapper .modal-content button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #1e40af, #7c3aed);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .lead-popup-wrapper .modal-content button:hover {
+    background: linear-gradient(135deg, #1e3a8a, #6d28d9);
+    transform: translateY(-2px);
+  }
+  .lead-popup-wrapper .modal-content button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  .lead-popup-wrapper .security {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+  .lead-popup-wrapper .loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<div class="lead-popup-wrapper" aria-live="polite">
+  <div id="leadModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="leadTitle" aria-describedby="leadDesc">
+    <div class="modal-content">
+      <h2 id="leadTitle" style="font-size: 25px;">⚡Conteúdo Exclusivo Liberado!</h2>
+      <p id="leadDesc">Preencha seus dados e descubra tudo que preparamos para você.</p>
+      <form id="leadForm" novalidate>
+        <input type="text" name="nome" placeholder="Seu nome completo" autocomplete="name" required />
+        <input type="tel" name="telefone" placeholder="Seu WhatsApp ou fixo" autocomplete="tel" required />
+        <button type="submit">🚀 LIBERAR ACESSO AGORA!</button>
+      </form>
+      <div class="security">🔒 Seus dados estão seguros</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const wrapper = document.querySelector('.lead-popup-wrapper');
+    const modal = wrapper.querySelector('#leadModal');
+    const form = wrapper.querySelector('#leadForm');
+    const button = form.querySelector('button');
+    const inputTelefone = form.querySelector('input[name="telefone"]');
+
+    window.addEventListener('load', () => {
+      if (!localStorage.getItem('leadPreenchido')) {
+        setTimeout(() => { modal.style.display = 'flex'; }, 2000);
+      }
+    });
+
+    // Aplica a máscara de telefone no formato (XX) X XXXX-XXXX
+    inputTelefone.addEventListener('input', e => {
+      let value = e.target.value.replace(/^(\+|00)?55/, '').replace(/\D/g, '');
+
+      if (value.length > 11) value = value.slice(0, 11);
+
+      if (value.length <= 2) {
+        value = value.replace(/(\d{0,2})/, '($1');
+      } else if (value.length <= 6) {
+        value = value.replace(/(\d{2})(\d{0,4})/, '($1) $2');
+      } else if (value.length <= 10) {
+        value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+      } else {
+        value = value.replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, '($1) $2 $3-$4');
+      }
+
+      e.target.value = value;
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const nome = form.nome.value.trim();
+      const telefone = form.telefone.value.trim(); // formatado
+
+      if (!nome || telefone.length < 14) {
+        alert('⚠️ Preencha todos os campos corretamente.');
+        return;
+      }
+
+      button.disabled = true;
+      button.innerHTML = '<span class="loading"></span>ENVIANDO...';
+
+      fetch('https://script.google.com/macros/s/AKfycbzmyeso41sDKwnqEC1bUC60RbUzGXQOC842Td_QmWCcFUN5pC3d1PrCklz8ainVwJC4/exec', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: `nome=${encodeURIComponent(nome)}&telefone=${encodeURIComponent(telefone)}`
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.status === 'success') {
+          localStorage.setItem('leadPreenchido', 'true');
+          modal.style.display = 'none';
+          alert('🎉 Dados enviados com sucesso!');
+        } else {
+          alert('❌ Erro: ' + (data.message || 'Erro desconhecido'));
+        }
+      })
+      .catch(() => alert('❌ Erro ao enviar.'))
+      .finally(() => {
+        button.disabled = false;
+        button.innerHTML = '🚀 LIBERAR ACESSO AGORA!';
+      });
+    });
+  })();
+</script>
