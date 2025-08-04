@@ -10,8 +10,8 @@ O projeto foi desenvolvido **do zero** utilizando **HTML5, CSS3 e JavaScript pur
 
 Veja o código em funcionamento diretamente no site da empresa:
 
-- [Conheça Nossa História](https://www.procolchoes.com.br/conheca-nossa-historia/)
-- [Página de Catálogos](https://www.procolchoes.com.br/catalogos/)
+Conheça Nossa História: https://www.procolchoes.com.br/conheca-nossa-historia/
+Catálogos no Site: https://www.procolchoes.com.br/catalogos/
 - **Popup de Leads e Barra de Notícias:** Visíveis durante a navegação geral do site.
 
 ---
