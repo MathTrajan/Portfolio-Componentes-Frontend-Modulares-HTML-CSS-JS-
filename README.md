@@ -8,9 +8,21 @@ O projeto foi criado **do zero** utilizando **HTML5, CSS3 e JavaScript (Vanilla 
 
 ### 🚀 Demonstração em Produção
 
-- **Conheça Nossa História:** [procolchoes.com.br/conheca-nossa-historia](https://www.procolchoes.com.br/conheca-nossa-historia/)  
-- **Catálogos no Site:** [procolchoes.com.br/catalogos](https://www.procolchoes.com.br/catalogos/)  
-- **Popup de Leads e Barra de Notícias:** Visíveis durante a navegação geral do site.
+Confira o site oficial da Pró Colchões para visualizar os componentes em funcionamento:
+
+- [Pró Colchões – Página Inicial](https://www.procolchoes.com.br)
+
+#### Exemplos de Componentes:
+
+<a href="https://www.procolchoes.com.br" target="_blank" rel="noopener noreferrer">
+  <img src="https://via.placeholder.com/600x300?text=Conheça+Nossa+História" alt="Conheça Nossa História" style="max-width:100%;border-radius:8px" />
+</a>
+
+<a href="https://www.procolchoes.com.br" target="_blank" rel="noopener noreferrer">
+  <img src="https://via.placeholder.com/600x300?text=Cat%C3%A1logos+no+Site" alt="Catálogos no Site" style="max-width:100%;border-radius:8px" />
+</a>
+
+<p><em>Observação:</em> O <strong>Popup de Leads</strong> e a <strong>Barra de Notícias</strong> aparecem durante a navegação geral no site oficial.</p>
 
 ---
 
