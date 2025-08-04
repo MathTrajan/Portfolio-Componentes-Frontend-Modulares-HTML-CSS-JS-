@@ -10,8 +10,8 @@ O projeto foi desenvolvido **do zero** utilizando **HTML5, CSS3 e JavaScript pur
 
 Veja o código em funcionamento diretamente no site da empresa:
 
-- [Conheça Nossa História](https://www.procolchoes.com.br/conheca-nossa-historia)  
-- [Página de Catálogos](https://www.procolchoes.com.br/catalogos)  
+- [Conheça Nossa História](https://www.procolchoes.com.br/conheca-nossa-historia/)
+- [Página de Catálogos](https://www.procolchoes.com.br/catalogos/)
 - **Popup de Leads e Barra de Notícias:** Visíveis durante a navegação geral do site.
 
 ---
@@ -54,4 +54,4 @@ Este projeto demonstra minha capacidade de **entregar soluções frontend robust
 ### 📩 Contato
 
 Desenvolvido por **Matheus Trajano**  
-[💼 LinkedIn](https://linkedin.com/in/seuusuario) | [🌐 Portfólio](https://seusite.com) | [✉️ E-mail](mailto:seuemail@gmail.com)
+[💼 LinkedIn](www.linkedin.com/in/matheus-trajano-5179a7378) |[✉️ E-mail](mailto:matheustrajano454@gmail.com)
